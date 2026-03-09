@@ -7,12 +7,15 @@ Rest Server for Android.
 
 Gradle:
 ```groovy
-repositories {
-    mavenCentral()
-    maven { url "https://jitpack.io" }
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
 }
 
-compile 'com.github.skornei:restserver:1.0.4+'
+implementation 'com.github.skornei:restserver:1.0.5'
 ```
 
 ## Documentation

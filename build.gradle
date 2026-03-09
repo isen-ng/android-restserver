@@ -1,19 +1,40 @@
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library' version '8.13.2'
+    id 'maven-publish'
+}
 
 android {
+    namespace 'ru.skornei.restserver'
+
     compileSdkVersion 26
-    buildToolsVersion "26.0.0"
 
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 26
     }
+
+    publishing {
+        singleVariant("release") { // Publishes the release build variant
+            withSourcesJar() // Optional: includes source code
+        }
+    }
 }
 
 dependencies {
-    //JUnit 4
-    testCompile 'junit:junit:4.12'
+    implementation 'org.nanohttpd:nanohttpd:2.3.1'
+    testImplementation 'junit:junit:4.13.2'
+}
 
-    //NanoHTTPD
-    compile 'org.nanohttpd:nanohttpd:2.3.1'
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'io.github.isen-ng'
+            artifactId = 'android-restserver'
+            version = '1.0.5'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
 }
