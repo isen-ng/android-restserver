@@ -15,7 +15,7 @@ dependencyResolutionManagement {
     }
 }
 
-implementation 'com.github.skornei:restserver:1.0.5'
+implementation 'com.github.isen-ng:android-restserver:1.0.5'
 ```
 
 ## Documentation
